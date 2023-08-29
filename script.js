@@ -6,7 +6,7 @@ function startQuiz() {
 }
 
 function showQuestion(index) {
-    if ( index < Math.min(4,images.length) ) {
+    if ( index < Math.min(10,images.length) ) {
         const imgElement = document.getElementById("quiz-image");
         imgElement.src = images[index];
 
