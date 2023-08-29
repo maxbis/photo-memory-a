@@ -3,8 +3,8 @@
 if ( isset($_GET['klas']) ) {
     $klas = $_GET['klas'];
 } else {
-    echo "Onjuiste code, waarschijnlijk klas?";
-    exit();
+    header("Location: folder.php");
+    exit(); // Ensure that code execution is terminated
 }
 
 
@@ -48,11 +48,6 @@ shuffle($images);
             Your Score: <span id="score-value">0</span>
         </div>
     </div>
-
-    <!-- Bootstrap JS (optional) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
         var images = <?php echo json_encode($images); ?>;

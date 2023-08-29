@@ -6,7 +6,7 @@ function startQuiz() {
 }
 
 function showQuestion(index) {
-    if (index < images.length) {
+    if ( index < Math.min(4,images.length) ) {
         const imgElement = document.getElementById("quiz-image");
         imgElement.src = images[index];
 
@@ -55,8 +55,10 @@ function showQuestion(index) {
             if (selected === images[currentQuestion]) {
                 score++;
                 showMessage('Right, this is '+rightName);
+                timeOut = 500;
             } else {
                 showMessage('Wrong, this is '+rightName);
+                timeOut = 3000;
             }
 
             currentQuestion++;
@@ -66,13 +68,13 @@ function showQuestion(index) {
                 showQuestion(currentQuestion);
                 showMessage('');
                 document.getElementById('quiz-form').style.display = 'block';
-              }, 3000);
+              }, timeOut);
         };
 
         formElement.appendChild(submitButton);
     } else {
         alert(`Game Over. Your score is ${score} out of ${images.length}`);
-        location.reload();
+        location.reload(true);
     }
 }
 
