@@ -73,7 +73,7 @@ function showQuestion(index) {
 
         formElement.appendChild(submitButton);
     } else {
-        alert(`Game Over. Your score is ${score} out of ${images.length}`);
+        alert(`Game Over. Your score is ${score} out of ${Math.min(10,images.length)}`);
         location.reload(true);
     }
 }
