@@ -75,3 +75,8 @@ h1 {
     font-weight: bold;
     text-align: center;
 }
+
+/* Adding margin to the label */
+label {
+    margin-left: 10px;
+}

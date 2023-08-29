@@ -34,7 +34,9 @@ function showQuestion(index) {
 
             const label = document.createElement("label");
             label.htmlFor = `choice${i}`;
-            label.textContent = choices[i].split('/').pop();
+            studentName = choices[i].split('/').pop();
+            studentName = studentName.split('.').shift();
+            label.textContent = studentName;
 
             formElement.appendChild(radioButton);
             formElement.appendChild(label);
@@ -47,29 +49,35 @@ function showQuestion(index) {
 
         submitButton.onclick = () => {
             const selected = document.querySelector('input[name="choice"]:checked').value;
+            const segments = images[currentQuestion].split('/');
+            const rightName = segments.pop().split('.').shift();
+
             if (selected === images[currentQuestion]) {
                 score++;
-                showMessage('Right!');
+                showMessage('Right, this is '+rightName);
             } else {
-                rightAnswer = images[currentQuestion];
-                showMessage('Wrong, the right answer is: '+rightAnswer);
+                showMessage('Wrong, this is '+rightName);
             }
+
             currentQuestion++;
             document.getElementById("score-value").innerText = score;
             
             setTimeout(function() {
                 showQuestion(currentQuestion);
                 showMessage('');
+                document.getElementById('quiz-form').style.display = 'block';
               }, 3000);
         };
 
         formElement.appendChild(submitButton);
     } else {
         alert(`Game Over. Your score is ${score} out of ${images.length}`);
+        location.reload();
     }
 }
 
 function showMessage(message) {
+    document.getElementById('quiz-form').style.display = 'none';
     const resultDiv = document.getElementById("message");
     resultDiv.textContent =message;
   }

@@ -1,5 +1,14 @@
 <?php
-$dir = "./images/3C/";
+
+if ( isset($_GET['klas']) ) {
+    $klas = $_GET['klas'];
+} else {
+    echo "Onjuiste code, waarschijnlijk klas?";
+    exit();
+}
+
+
+$dir = "./images/$klas/";
 $images = glob($dir . "*.{jpg,jpeg,png}", GLOB_BRACE);
 shuffle($images);
 ?>
